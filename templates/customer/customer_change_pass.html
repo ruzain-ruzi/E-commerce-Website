@@ -1,0 +1,57 @@
+{% extends 'customer/index.html' %}
+{% block body %}
+
+
+    <h2 class="heading-bar p-2 text-center text-white">Change Password</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="container mt-5">
+            <!-- row -->
+            <div class="row tm-content-row">
+
+                <div class="w-50 tm-block-col tm-col-account-settings">
+                    <div class="tm-bg-primary-dark tm-block tm-block-settings" style="min-height: 0">
+                        <h2 class="tm-block-title">Change Password</h2>
+                        <label for="oldPassword">Old Password:</label>
+                        <input
+                                id="oldPassword"
+                                name="oldPassword"
+                                type="password"
+                                class="mb-4 form-control validate"
+                                required
+                        />
+
+                        <label for="password">New Password:</label>
+                        <input
+                                id="password"
+                                name="passwordFile"
+                                type="password"
+                                class="mb-4 form-control validate"
+                                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,25}$"
+                                title="At least 1 Uppercase, 1 Lowercase, 1 Number,&#10;a Symbol from !@#$%^&*_=+- &#10;and Minimum 8 to 25 characters required"
+                                required>
+                        <label for="password2">Confirm Password:</label>
+                        <input
+                                id="password2"
+                                name="password2"
+                                type="password"
+                                class="form-control validate"
+                        />
+                        <div class="form-group">
+                            <label class="tm-hide-sm">&nbsp;</label>
+                            <input type="submit"
+                                   class="btn btn-primary btn-block text-uppercase"
+                                   value="Change Password"
+                                   style="width: 100%;height: 13%;margin-bottom: -10px"
+                                   pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,25}$"
+                                   title="At least 1 Uppercase, 1 Lowercase, 1 Number,&#10;a Symbol from !@#$%^&*_=+- &#10;and Minimum 8 to 25 characters required"
+                                   required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+
+{% endblock %}

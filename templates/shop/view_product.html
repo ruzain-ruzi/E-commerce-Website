@@ -1,0 +1,52 @@
+{% extends 'shop/index.html' %}
+{% block body %}
+
+    <h2 class="heading-bar p-2 text-center">Products</h2>
+    <form action="" method="get">
+        {% csrf_token %}
+        <div class="container mt-5">
+            <div class="tm-product-table-container">
+                <table class="table table-striped tm-table-small tm-product-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Available Stock</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td class="tm-product-name">{{ i.name }}</td>
+                            <td><img class="product-img" src="{{ i.photo }}" width="130" height="100"
+                                     alt="product-image"></td>
+                            <td>{{ i.price }}</td>
+                            <td>{{ i.stock }}</td>
+                            <td class="edit-buttons">
+                                <a id="button" href="/update_product/{{ i.id }}" class="tm-product-edit-link"
+                                   title="edit">
+                                    <i class="far fa-edit tm-product-edit-icon"></i>
+                                </a>
+                                <a id="button" href="/delete_product/{{ i.id }}" class="tm-product-delete-link"
+                                   title="delete" onclick="return confirm('Confirm to remove this product?')">
+                                    <i class="far fa-trash-alt tm-product-delete-icon"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- table container -->
+            <a id="button" href="/add_product"
+               class="add-prod btn btn-primary btn-block text-uppercase mb-3">Add new product
+            </a>
+        </div>
+    </form>
+
+{% endblock %}

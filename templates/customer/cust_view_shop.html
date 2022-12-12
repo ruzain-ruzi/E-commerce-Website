@@ -1,0 +1,85 @@
+{% extends 'customer/index.html' %}
+{% block body %}
+
+    <h2 class="heading-bar p-2 text-center text-white">Shops</h2>
+    <form action="" method="get">
+        {% csrf_token %}
+        <div class="business2 card-group">
+            {% for i in data %}
+                <div class="front" style="min-width: 270px !important;">
+                    <div>
+                        <img src="{{ i.photo }}" width="270px" height="190px" alt="product_img">
+                    </div>
+                    <div class="avatar" style="top: 180px !important;">
+                        <p>{{ i.name }}</p>
+                    </div>
+                    <div class="infos" style="width: 90% !important;">
+                        <div>
+                            <i class="fa-solid fa-phone text-center"></i>
+                            <div>
+                                <p>{{ i.phone_number }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-envelope text-center"></i>
+                            <div>
+                                <p>{{ i.email }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-location-dot text-center"></i>
+                            <div class="text-uppercase">
+                                <p class="mt-2">{{ i.place }}
+                                <p class="mt-0">{{ i.post }}, {{ i.pin }}</p>
+                            </div>
+                        </div>
+                        <div class="mt-2"
+                             style="margin-bottom: -6px !important;">
+                            <a id="button"
+                               class="btn btn-primary"
+                               style="width: 100% !important;border-radius: 10px"
+                               href="shop_products/{{ i.shop_id_id }}">View Products</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {#        <div class="container mt-5">#}
+        {#            <div class="tm-product-table-container">#}
+        {#                <table class="table table-striped tm-table-small tm-product-table">#}
+        {#                    <thead>#}
+        {##}
+        {#                    <tr>#}
+        {#                        <th scope="col">#</th>#}
+        {#                        <th scope="col">Name</th>#}
+        {#                        <th scope="col">Place</th>#}
+        {#                        <th scope="col">Address</th>#}
+        {#                        <th scope="col">Email</th>#}
+        {#                        <th scope="col">Phone Number</th>#}
+        {#                        <th scope="col">&nbsp;</th>#}
+        {#                    </tr>#}
+        {#                    </thead>#}
+        {#                    <tbody>#}
+        {#                    {% for i in data %}#}
+        {#                        <tr>#}
+        {#                            <th scope="col">{{ forloop.counter }}</th>#}
+        {#                            <th scope="col">{{ i.name }}</th>#}
+        {#                            <th scope="col">{{ i.place }}</th>#}
+        {#                            <th scope="col">{{ i.post }},{{ i.pin }}</th>#}
+        {#                            <th scope="col">{{ i.email }}</th>#}
+        {#                            <th scope="col">{{ i.phone_number }}</th>#}
+        {#                            <th scope="col">#}
+        {#                                <a id="button"#}
+        {#                                   class="btn btn-primary rounded-3"#}
+        {#                                   href="shop_products/{{ i.shop_id_id }}">View Products</a>#}
+        {#                            </th>#}
+        {#                        </tr>#}
+        {#                    {% endfor %}#}
+        {##}
+        {#                    </tbody>#}
+        {#                </table>#}
+        {#            </div>#}
+        {#        </div>#}
+    </form>
+
+{% endblock %}

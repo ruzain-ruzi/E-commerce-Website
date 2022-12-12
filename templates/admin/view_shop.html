@@ -1,0 +1,43 @@
+{% extends 'admin/index.html' %}
+{% block body %}
+
+
+    <h2 class="heading-bar p-2 text-center">Shops</h2>
+    <form action="" method="get">
+        <div class="business2 card-group">
+            {% for i in data %}
+                <div class="front">
+                    <div>
+                        <img src="{{ i.photo }}" width="260px" height="210px" alt="product_img">
+                    </div>
+                    <div class="avatar">
+                        <p>{{ i.name }}</p>
+                    </div>
+                    <div class="infos">
+                        <div>
+                            <i class="fa-solid fa-phone text-center"></i>
+                            <div>
+                                <p>{{ i.phone_number }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-envelope text-center"></i>
+                            <div>
+                                <p>{{ i.email }}</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="fa-solid fa-location-dot text-center"></i>
+                            <div class="text-uppercase">
+                                <p class="mt-2">{{ i.place }}
+                                <p class="mt-0">{{ i.post }}, {{ i.pin }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </form>
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'customer/index.html' %}
+{% block body %}
+
+    <h2 class="heading-bar p-2 text-center">Reviews</h2>
+    <form action="" method="get">
+        {% csrf_token %}
+        <div class="container mt-5">
+            <div class="tm-product-table-container">
+                <table class="table table-striped tm-table-small tm-product-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Review</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                        {% if i.review != 'pending' %}
+                            <tr>
+                                <th scope="row">{{ forloop.counter }}</th>
+                                <td>
+                                    <img src="{{ i.order_id.product_id.photo }}" width="100px" height="80px"
+                                         alt="product-img">
+                                    {{ i.order_id.product_id.name }}
+                                </td>
+                                <td>{{ i.cust_id.name }}</td>
+                                <td>{{ i.review }}</td>
+                                <td>{{ i.date }}</td>
+                            </tr>
+
+                        {% endif %}
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

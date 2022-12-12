@@ -1,0 +1,52 @@
+{% extends 'customer/index.html' %}
+{% block body %}
+
+    <h2 class="heading-bar p-2 text-center">Products</h2>
+    <div class="mt-4 card-group container-fluid mx-0 justify-content-center" style="max-width: 100%">
+        {% for i in data %}
+            <div id="cards" class="p-0 m-3 shadow-lg card border-0">
+                <img src="{{ i.photo }}" width="250" height="180px"
+                     class="card-img-top border-0 border-dark" style="max-height: 200px;border-radius: 10px 10px 0 0"
+                     alt="Product-Image">
+                <form action="/products" method="post">
+                    {% csrf_token %}
+                    <div class="card-img-overlay">
+                        <label>
+                            <input type="text" name="product"
+                                   class="text-dark bg-light text-center border-1 rounded-pill"
+                                   value="{{ i.id }}" style="width: 30px" hidden>
+                        </label>
+
+                    </div>
+                    <div class="p-2 card-body" style="min-height: 85px">
+                        <h6 class="p-0 card-title">{{ i.name }}</h6>
+                    </div>
+                    {% if i.stock != 0 %}
+                        <div class="card-footer d-flex flex-row justify-content-between">
+                            <b class="my-2 card-text text-white text-center">₹{{ i.price }}</b>
+                            <input id="quantity-box" type="number" class="my-1 num"
+                                   name="quantFile"
+                                   value="1"
+                                   min="1" max="100" title="Enter Quantity">
+
+                            <button id="button"
+                                    class="btn btn-primary fa-solid fa-cart-plus float-end"
+                                    style="border-radius: 5px"
+                                    title="Add to Cart"></button>
+                        </div>
+                    {% else %}
+                        <div class="card-footer d-flex flex-row justify-content-between">
+                            <b class="my-2 text-center text-danger">Out of Stock</b>
+                            <button id="button"
+                                    class="btn btn-primary fa-solid fa-cart-plus float-end"
+                                    style="border-radius: 5px"
+                                    title="Add to Cart" disabled></button>
+                        </div>
+                    {% endif %}
+                </form>
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}

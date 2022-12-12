@@ -1,0 +1,304 @@
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 50%;
+    overflow-y: scroll;
+}
+
+body {
+    min-height: 50%;
+    /*background: linear-gradient(90deg, #b7f8db 0%, #50a7c2 100%);*/
+    background-image: linear-gradient(to right top, #00dbe1, #00cfd7, #00c4cd, #00b8c3, #00adb9, #00a2ae, #0098a4, #008d99, #00818c, #00757f, #006972, #005d66);
+    font-family: 'Manjari', sans-serif;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+}
+
+a {
+    text-decoration: none;
+    color: #005d66;
+    transition: .5s ease;
+}
+
+a:hover {
+    color: black;
+}
+
+.form {
+    background: rgba(255, 255, 255, 0.3);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border: 0 solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    -webkit-box-shadow: 6px 6px 25px -10px #000000;
+    -moz-box-shadow: 6px 6px 25px -10px #000000;
+    box-shadow: 6px 6px 25px -10px #000000;
+    padding: 30px;
+    max-width: 480px;
+    margin: 50px auto;
+}
+
+::placeholder {
+    font-weight: lighter;
+    letter-spacing: 2px;
+    font-size: 14px;
+    color: rgb(203, 203, 203) !important;
+}
+
+input[type='radio']:checked {
+    background: #00373e !important;
+}
+
+form .txt_field {
+    position: relative;
+    border-bottom: 2px solid #adadad;
+    margin: 30px 0;
+}
+
+.txt_field input {
+    color: rgb(0, 78, 83);
+    width: 100%;
+    padding: 0 5px;
+    height: 40px;
+    font-size: 16px;
+    border: none;
+    background: none;
+    outline: none;
+}
+
+.txt_field label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    color: #4a4a4a;
+    transform: translateY(-50%);
+    font-size: 16px;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.txt_field span::before {
+    content: '';
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #00373e;
+    transition: .5s;
+}
+
+.txt_field input:focus ~ label,
+.txt_field input:valid ~ label {
+    top: -5px;
+    color: #00373e;
+}
+
+
+.txt_field input:focus ~ span::before,
+.txt_field input:valid ~ span::before {
+    width: 100%;
+}
+
+.top-area {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 40px 0;
+}
+
+.top-area:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.t1 {
+    border-radius: 10px 0 0 10px;
+}
+
+.t2 {
+    border-radius: 0 10px 10px 0;
+}
+
+.top-area li a {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    background: rgba(160, 179, 176, 0.25);
+    color: #565656;
+    font-size: 20px;
+    float: left;
+    width: 50%;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+.top-area li a:hover {
+    background: #009eab;
+    color: #ffffff;
+}
+
+.top-area .active a {
+    background: #005d66;
+    color: #ffffff;
+}
+
+.tab-content > div:last-child {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 300;
+    margin: 0 0 40px;
+}
+
+.label {
+    position: absolute;
+    -webkit-transform: translateY(6px);
+    transform: translateY(6px);
+    left: 13px;
+    color: #565656;
+    transition: all 0.25s ease;
+    -webkit-backface-visibility: hidden;
+    font-size: 22px;
+}
+
+label .req {
+    margin: 2px;
+    color: #6c757d;
+}
+
+.label.active {
+    -webkit-transform: translateY(50px);
+    transform: translateY(50px);
+    left: 2px;
+    font-size: 14px;
+}
+
+.label.active .req {
+    opacity: 0;
+}
+
+.label.highlight {
+    color: #ffffff;
+}
+
+input, textarea {
+    font-size: 22px;
+    display: block;
+    width: 100%;
+    background: none;
+    border: 1px solid #a0b3b0;
+    color: #ffffff;
+    border-radius: 0;
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+
+input[type="file"]::file-selector-button {
+    color: white;
+    font-size: small;
+    height: 35px;
+    border: 0;
+    padding: 0.2em 0.4em;
+    border-radius: 0.2em;
+    background-color: #005d66;
+    transition: 0.5s;
+}
+
+input[type="file"]::-ms-browse:hover {
+    cursor: pointer;
+    background-color: #009eab;
+    border: 0;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    cursor: pointer;
+    background-color: #009eab;
+    border: 0;
+}
+
+input[type="file"]::file-selector-button:hover {
+    cursor: pointer;
+    background-color: #009eab;
+    border: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+input:focus, textarea:focus {
+    outline: 0;
+    border-color: #00373e;
+}
+
+textarea {
+    border: 2px solid #a0b3b0;
+    resize: vertical;
+}
+
+
+.label-field {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.top-row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.top-row > div {
+    float: left;
+    width: 48%;
+    margin-right: 4%;
+}
+
+.top-row > div:last-child {
+    margin: 0;
+}
+
+.button {
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+    padding: 15px 0;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: .1em;
+    background: #00373e;
+    color: #ffffff;
+    transition: all 0.5s ease;
+    -webkit-appearance: none;
+}
+
+.button:hover, .button:focus {
+    background: #009eab;
+}
+
+.button-block {
+    display: block;
+    width: 100%;
+}
+
+.forgot {
+    margin-top: -20px;
+    text-align: right;
+}
+
+@media (max-width: 765px) {
+    label {
+        left: 0;
+    }
+}

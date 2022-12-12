@@ -1,0 +1,72 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.login_page),
+
+    # admin
+    path('admin', views.admin_home),
+    path('vregshop', views.view_registered_shop),
+    path('approve/<id>', views.approve_shop),
+    path('reject/<id>', views.reject_shop),
+    path('vshop', views.view_shop),
+    path('vcomplaint', views.view_complaint),
+    path('sendrep/<id>', views.send_reply),
+    path('sendrep/sendrep/<id>', views.send_reply),
+    path('vcustomer', views.view_cust),
+    path('vfeed', views.view_feedback),
+
+    # shop
+    path('register', views.reg),
+    path('shop', views.shop_home),
+    path('add_product', views.add_prod),
+    path('view_product', views.view_prod),
+    path('update_product/<id>', views.update_prod),
+    path('update_product/u_prod/<id>', views.update_prod),
+    path('delete_product/<id>', views.delete_prod),
+    path('booking', views.view_booking),
+    path('reviews', views.view_reviews),
+    path('s_profile', views.view_profile),
+    path('shop_update_profile', views.shop_update_profile),
+    path('shop_change_password', views.shop_change_pass),
+
+    # customer
+    path('user_reg', views.user_reg),
+    path('customer', views.cust_home),
+    path('shops', views.cust_view_shop),
+    path('shop_products/<id>', views.view_shop_products),
+    path('products', views.add_cart),
+    path('cart', views.view_cart),
+    path('rem_cart/<id>', views.remove_cart),
+    path('checkout', views.cart_checkout),
+    path('cust_orders', views.view_orders),
+    path('review/<id>', views.product_review),
+    path('cust_reviews/<id>', views.cust_reviews),
+    path('cust_profile', views.view_cust_profile),
+    path('cust_update_profile', views.cust_update_profile),
+    path('cust_change_password', views.cust_change_pass),
+    path('send_complaint', views.send_comp),
+    path('send_feedback', views.send_feed),
+
+    # android
+    path('android_user_reg', views.android_user_reg),
+    path('android_login', views.android_login),
+    path('android_view_shop', views.android_view_shop),
+    path('android_view_shop_product', views.android_view_shop_product),
+    path('android_view_product', views.android_view_product),
+    path('android_add_cart', views.android_add_cart),
+    path('android_view_cart', views.android_view_cart),
+    path('android_add_quantity', views.android_add_quantity),
+    path('android_remove_quantity', views.android_remove_quantity),
+    path('android_remove_cart', views.android_remove_cart),
+    path('android_cart_checkout', views.android_cart_checkout),
+    path('android_view_order', views.android_view_order),
+    path('android_review', views.android_review),
+    path('android_view_reviews', views.android_view_reviews),
+    path('android_complaint', views.android_complaint),
+    path('android_view_reply', views.android_view_reply),
+    path('android_feedback', views.android_feedback),
+    path('android_view_profile', views.android_view_profile),
+    path('android_update_profile', views.android_update_profile),
+    path('android_change_password', views.android_change_password),
+]

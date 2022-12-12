@@ -1,0 +1,245 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/bootstrap.css' %}"/>
+<link rel="stylesheet" type="text/css" href="{% static 'home/css/register.css' %}">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign-Up</title>
+    <link href="https://fonts.googleapis.com/css?family=Manjari&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'favicon/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'favicon/safari-pinned-tab.svg' %}" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="{% static 'favicon/favicon.ico' %}" rel="icon">
+</head>
+<body>
+
+{% for message in messages %}
+
+    <div id="alert-msg" class="m-0 alert {{ message.tags }} alert-success alert-dismissible fade show" role="alert">
+        <strong class="d-flex flex-row justify-content-center">{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+
+<div class="form">
+
+    <ul class="top-area">
+        <li class="tab active"><a class="t1" href="#signup">Shop</a></li>
+        <li class="tab"><a class="t2" href="#login">User</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="signup">
+
+            <form action="/register" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="txt_field">
+                    <input id="name" name="name" type="text" required>
+                    <span></span>
+                    <label for="name" class='label'>Name</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="place" name="place" type="text" required>
+                    <span></span>
+                    <label for="place" class='label'>Place</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="post" name="post" type="text" required>
+                    <span></span>
+                    <label for="post" class='label'>Post</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="pin" name="pin" type="text"
+                           pattern="([0-9]{6})" maxlength="6" title="Pin should be 6 digits"
+                           oninput="this.value=this.value.replace(/\D/g,'');" required>
+                    <span></span>
+                    <label for="pin" class='label'>Pin</label>
+                </div>
+
+                <div>
+                    <label for="pict">Photo</label>
+                    <input name="fileField" type="file" id="pict">
+                </div>
+
+                <div class="txt_field">
+                    <input id="phone" name="number" type="text" pattern="([0-9]{10})" maxlength="10"
+                           title="Mobile number should be 10 digits"
+                           oninput="this.value=this.value.replace(/\D/g,'');" required>
+                    <span></span>
+                    <label for="phone" class='label'>Phone Number</label>
+                </div>
+
+
+                <div class="txt_field">
+                    <input id="email" name="email" type="email" required>
+                    <span></span>
+                    <label for="email" class='label'>Email</label>
+                </div>
+
+
+                <div class="txt_field">
+                    <input id="password" name="passwd" type="password"
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,25}$"
+                           title="At least 1 Uppercase, 1 Lowercase, 1 Number,&#10;a Symbol from !@#$%^&*_=+- &#10;and Minimum 8 to 25 characters required"
+                           required>
+                    <span></span>
+                    <label for="password" class='label'>Password</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="password1" name="passwd1" type="password" onkeyup="check_pass()" required>
+                    <span></span>
+                    <label for="password1" class='label'>Confirm Password</label>
+                    <span class="mt-1 ms-2 position-absolute" id='message'></span>
+                </div>
+
+
+                <input type="submit" class="button button-block" value="Register"/>
+
+                <div class="mt-3 text-center" style="margin-bottom: -30px;">
+                    <i>Already have an account?</i>
+                    <a class="text-decoration-underline" href="/">Login</a>
+                </div>
+
+
+            </form>
+
+        </div>
+
+        <div id="login">
+
+            <form action="/user_reg" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="txt_field">
+                    <input id="name" name="name" type="text" required>
+                    <span></span>
+                    <label for="name" class='label'>Name</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="place" name="place" type="text" required>
+                    <span></span>
+                    <label for="place" class='label'>Place</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="post" name="post" type="text" required>
+                    <span></span>
+                    <label for="post" class='label'>Post</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="pin" name="pin" type="text"
+                           pattern="([0-9]{6})" maxlength="6" title="Pin should be 6 digits"
+                           oninput="this.value=this.value.replace(/\D/g,'');" required>
+                    <span></span>
+                    <label for="pin" class='label'>Pin</label>
+                </div>
+
+                <div class="mt-5 txt_field">
+                    <label for="dob" style="font-size: inherit;margin-top: -20px;">Date of Birth</label>
+                    <input id="dob" name="dob" type="date" required>
+                </div>
+
+                <div>
+                    <label for="gender" class="label mx-4"
+                           style="font-size: inherit;margin-left: -100px;">Gender</label><br>
+                    <p class="p-2" style="margin-left: 2px">
+
+                        <label for="male">
+                            <input type="radio" name="gender" value="Male">
+                        </label>
+                        <label>Male</label>
+
+                        <label for="female" class="ps-3">
+                            <input type="radio" name="gender" value="Female">
+                        </label>
+                        <label>Female</label>
+
+                        <label for="others" class="ps-3">
+                            <input type="radio" name="gender" value="others">
+                        </label>
+                        <label>Others</label>
+                    </p>
+                </div>
+
+                <div>
+                    <label for="pict">Photo</label>
+                    <input name="fileField" type="file" id="pict">
+                </div>
+
+                <div class="txt_field">
+                    <input id="phone" name="number" type="text" pattern="([0-9]{10})" maxlength="10"
+                           title="Mobile number should be 10 digits"
+                           oninput="this.value=this.value.replace(/\D/g,'');" required>
+                    <span></span>
+                    <label for="phone" class='label'>Phone Number</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="email" name="email" type="email" required>
+                    <span></span>
+                    <label for="email" class='label'>Email</label>
+                </div>
+
+
+                <div class="txt_field">
+                    <input id="upassword" name="passwd" type="password"
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,25}$"
+                           title="At least 1 Uppercase, 1 Lowercase, 1 Number,&#10;a Symbol from !@#$%^&*_=+- &#10;and Minimum 8 to 25 characters required"
+                           required>
+                    <span></span>
+                    <label for="upassword" class='label'>Password</label>
+                </div>
+
+                <div class="txt_field">
+                    <input id="upassword1" name="passwd1" type="password" onkeyup="check_user_pass()" required>
+                    <span></span>
+                    <label for="upassword1" class='label'>Confirm Password</label>
+                    <span class="mt-1 ms-2 position-absolute" id='message1'></span>
+                </div>
+
+                <button class="button button-block">Register</button>
+                <div class="mt-3 text-center" style="margin-bottom: -30px;">
+                    <i>Already have an account?</i>
+                    <a class="text-decoration-underline" href="/">Login</a>
+                </div>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function check_pass() {
+        if ($('#password').val() === $('#password1').val()) {
+            $('#message').css('display', 'none');
+        } else
+            $('#message').html('Password Mismatch').css('color', 'red');
+    }
+
+    function check_user_pass() {
+        if ($('#upassword').val() === $('#upassword1').val()) {
+            $('#message1').css('display', 'none');
+        } else
+            $('#message1').html('Password Mismatch').css('color', 'red');
+    }
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src="{% static 'home/js/function.js' %}"></script>
+</body>
+</html>

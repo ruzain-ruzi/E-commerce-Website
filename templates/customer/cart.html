@@ -1,0 +1,63 @@
+{% extends 'customer/index.html' %}
+{% block body %}
+
+    <h2 class="heading-bar p-2 text-center text-white">My Cart</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <div class="container mt-5">
+            <div class="tm-product-table-container">
+                <table id="table" class="table table-striped tm-table-small tm-product-table">
+                    <thead class="sticky-top">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                        {% if i.master_id.status == 'Add to Cart' %}
+                            <tr>
+                                <th scope="col">{{ forloop.counter }}</th>
+                                <th scope="col">{{ i.product_id.name }}</th>
+                                <th scope="col"><img src="{{ i.product_id.photo }}" width="60px"
+                                                     height="50px"
+                                                     alt="product-image"></th>
+                                <th scope="col">{{ i.quantity }}</th>
+                                <th scope="col">₹{{ i.total_price }}</th>
+                                <th scope="col" class=" text-center"><a id="button"
+                                                                        href="/rem_cart/{{ i.id }}"
+                                                                        class="btn btn-danger"
+                                                                        onclick="return confirm('Confirm to remove this product?')"
+                                                                        style="border-radius: 5px"
+                                                                        title="Remove Item"><i
+                                        class="bi bi-trash"></i>
+                                </a>
+                                </th>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+
+            <hr style="height: 4px">
+            <div class="d-flex flex-row justify-content-end">
+                <b class="my-3 text-primary" style="margin-right: 5%;vertical-align: center">Total Amount :
+                    <b>₹{{ total }}</b>
+                </b>
+                <a id="button" class="btn btn-primary py-3 float-end rounded-3"
+                   href="/checkout" style="min-width: 12%">Checkout</a>
+            </div>
+
+        </div>
+    </form>
+
+
+{% endblock %}

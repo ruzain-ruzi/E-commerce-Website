@@ -1,0 +1,51 @@
+{% extends 'customer/index.html' %}
+{% block body %}
+
+    <h2 class="heading-bar p-2 text-center text-white">My Orders</h2>
+    <form action="" method="get">
+        {% csrf_token %}
+
+        <div class="container mt-5">
+            <div class="tm-product-table-container">
+                <table class="table table-striped tm-table-small tm-product-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Product Review</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in ord %}
+                        {% if x.master_id.status == 'Booked' %}
+                            <tr>
+                                <th scope="col">{{ forloop.counter }}</th>
+                                <th scope="col">{{ x.product_id.name }}</th>
+                                <th scope="col"><img src="{{ x.product_id.photo }}" width="60px"
+                                                     height="50px"
+                                                     alt="product-image"></th>
+                                <th scope="col">{{ x.quantity }}</th>
+                                <th scope="col">{{ x.total_price }}</th>
+                                <th scope="col">{{ x.date }}</th>
+                                <th class="d-flex flex-column" scope="col">
+                                    <a id="button" class="mb-1 w-75 btn btn-primary rounded-3"
+                                       href="/review/{{ x.id }}">Add Review</a>
+                                    <a id="button" class="mt-1 w-75 btn btn-primary bg-primary bg-gradient rounded-3"
+                                       href="/cust_reviews/{{ x.product_id_id }}">View Reviews</a>
+                                </th>
+                            </tr>
+                        {% endif %}
+
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

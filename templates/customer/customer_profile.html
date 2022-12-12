@@ -1,0 +1,148 @@
+{% extends 'customer/index.html' %}
+{% block body %}
+
+
+    <h2 class="heading-bar p-2 text-center text-white">My Profile</h2>
+    <form action="" method="get" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for i in data %}
+            <div class="container mt-5">
+                <!-- row -->
+                <div class="row tm-content-row">
+                    <div class="tm-block-col tm-col-avatar">
+                        <div class="tm-bg-primary-dark tm-block tm-block-avatar">
+                            <h2 class="tm-block-title">Avatar</h2>
+                            <div id="uploadAvatar" class="tm-avatar-container">
+                                <img
+                                        src="{{ i.photo }}"
+                                        alt="Avatar"
+                                        width="350" height="400"
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tm-block-col tm-col-account-settings">
+                        <div class="tm-bg-primary-dark tm-block tm-block-settings">
+                            <h2 class="tm-block-title">Account Settings</h2>
+
+                            <div class="tm-signup-form row">
+                                <div class="form-group col-lg-6">
+                                    <label for="name">Name</label>
+                                    <input
+                                            id="name"
+                                            name="name"
+                                            type="text"
+                                            class="form-control validate"
+                                            value="{{ i.name }}"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="email">Email</label>
+                                    <input
+                                            id="email"
+                                            name="email"
+                                            type="email"
+                                            class="form-control validate"
+                                            value="{{ i.email }}"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="phone">Phone</label>
+                                    <input
+                                            id="phone"
+                                            name="phone"
+                                            type="tel"
+                                            class="form-control validate"
+                                            value="{{ i.phone_number }}"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="place">Place</label>
+                                    <input
+                                            id="place"
+                                            name="place"
+                                            type="text"
+                                            class="form-control validate"
+                                            value="{{ i.place }}"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="post">Post</label>
+                                    <input
+                                            id="post"
+                                            name="post"
+                                            type="text"
+                                            class="form-control validate"
+                                            value="{{ i.post }}"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="pin">Pin</label>
+                                    <input
+                                            id="pin"
+                                            name="pin"
+                                            type="tel"
+                                            class="form-control validate"
+                                            value="{{ i.pin }}"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="dob">Date of Birth</label>
+                                    <input
+                                            id="dob"
+                                            name="dob"
+                                            type="text"
+                                            class="form-control validate"
+                                            value="{{ i.dob }}"
+                                            readonly
+                                    />
+                                </div>
+                                <div class="form-group col-lg-6">
+                                    <label for="gender">Gender</label>
+                                    <input
+                                            id="gender"
+                                            name="gender"
+                                            type="text"
+                                            class="form-control validate"
+                                            value="{{ i.gender }}"
+                                            readonly
+                                    />
+                                </div>
+
+                                <div class="form-group"
+                                     style="margin-bottom:-10px;margin-top: 10px;">
+                                    <a
+                                            id="button"
+                                            class="btn btn-primary btn-block text-uppercase"
+                                            href="/cust_update_profile"
+                                            style="width: 100%;"
+                                    >
+                                        Update Your Profile
+                                    </a>
+                                    <div class="text-center form-group"
+                                         style="margin-bottom:-5px;margin-top: 15px;">
+                                        <a
+                                                id="button"
+                                                class="btn btn-primary text-uppercase"
+                                                href="/cust_change_password"
+                                                style="color: #ff9393;width: 50%;"
+                                        >
+                                            Change Password
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </form>
+
+{% endblock %}

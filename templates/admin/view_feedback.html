@@ -1,0 +1,33 @@
+{% extends 'admin/index.html' %}
+{% block body %}
+
+
+    <h2 class="heading-bar p-2 text-center">Feedbacks</h2>
+    <form action="" method="get">
+        <div class="container mt-5">
+            <div class="tm-product-table-container">
+                <table id="table" class="table table-striped tm-table-small tm-product-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Feedback</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                        <tr>
+                            <th scope="col">{{ forloop.counter }}</th>
+                            <th scope="col">{{ i.cust_id.name }}</th>
+                            <th scope="col">{{ i.feedback }}</th>
+                            <th scope="col">{{ i.date }}</th>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

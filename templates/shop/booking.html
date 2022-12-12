@@ -1,0 +1,51 @@
+{% extends 'shop/index.html' %}
+{% block body %}
+
+
+    <h2 class="heading-bar p-2 text-center">Bookings</h2>
+    <form action="" method="get">
+        {% csrf_token %}
+        <div class="container mt-5">
+            <div class="tm-product-table-container">
+                <table class="table table-striped tm-table-small tm-product-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Order Date</th>
+                        {#<th scope="col">&nbsp;</th>#}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td class="tm-product-name">{{ i.product_id.name }}</td>
+                            <td><img class="product-img" src="{{ i.product_id.photo }}" width="130" height="100"
+                                     alt="product-image"></td>
+                            <td>₹{{ i.total_price }}</td>
+                            <td>{{ i.master_id.cust_id.name }}</td>
+                            <td>{{ i.quantity }}</td>
+                            <td>{{ i.date }}</td>
+                            {#                                <td class="edit-buttons">#}
+                            {#                                    <a href="/update_product/{{ i.id }}" class="tm-product-edit-link" title="edit">#}
+                            {#                                        <i class="far fa-edit tm-product-edit-icon"></i>#}
+                            {#                                    </a>#}
+                            {#                                    <a href="/delete_product/{{ i.id }}" class="tm-product-delete-link" title="delete">#}
+                            {#                                        <i class="far fa-trash-alt tm-product-delete-icon"></i>#}
+                            {#                                    </a>#}
+                            {#                                </td>#}
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

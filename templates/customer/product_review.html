@@ -1,0 +1,111 @@
+{% extends 'customer/index.html' %}
+{% block body %}
+
+
+    <h2 class="heading-bar p-2 text-center text-white">Product Review</h2>
+
+    <form action="/review/{{ data.id }}" method="post">
+        {% csrf_token %}
+
+        <section class="intro">
+            <div class="h-100">
+                <div class="mt-5 mask d-flex align-items-center h-100">
+                    <div class="mt-5 container w-50">
+                        <label class="d-flex flex-row justify-content-center">A Honest Review Is Important To Us</label>
+                        <div class="row justify-content-center">
+                            <div class="col-12">
+                                <div class="table-responsive table-scroll" data-mdb-perfect-scrollbar="true"
+                                     style="position: relative; height: 700px">
+                                    <table class="table mb-0" style="background: transparent">
+                                        <tbody style="background-color: #009eab;">
+
+                                        <tr>
+                                            <th style="width:100%;">
+                                                <label for="review">
+                                            <textarea name="review" id="review" cols="92"
+                                                      rows="5"
+                                                      style="background: #005d66"
+                                                      placeholder="Type Your Review Here..."></textarea>
+                                                </label>
+                                            </th>
+                                        </tr>
+                                        </tbody>
+                                        <tr>
+                                            <th colspan="2" class="text-center" scope="row"
+                                                style="border-radius: 0 0 10px 10px !important;">
+                                                <input type="submit"
+                                                       id="send" value="SEND" style="background: #009eab;"/>
+                                            </th>
+                                        </tr>
+
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <style>
+        html,
+        body,
+        .intro {
+            height: 100%;
+        }
+
+        table td,
+        table th {
+            border-radius: 10px 10px 0 0;
+        }
+
+        thead th {
+            color: #fff;
+        }
+
+        .table-scroll {
+            border-radius: .5rem;
+        }
+
+        .table-scroll table thead th {
+            font-size: 1.25rem;
+        }
+
+        tbody {
+            border-radius: 10px;
+        }
+
+        thead {
+            top: 0;
+            position: sticky;
+        }
+
+        textarea {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        input[type=submit] {
+            font-size: large;
+            font-weight: bold;
+            letter-spacing: 3px;
+            width: 100%;
+            padding: 7px;
+            color: white;
+            background: #005d66;
+            border: 0;
+            border-radius: 5px;
+            transition: .5s;
+        }
+
+        input[type=submit]:hover {
+            color: black;
+            background: #2bc5d4 !important;
+        }
+    </style>
+
+{% endblock %}

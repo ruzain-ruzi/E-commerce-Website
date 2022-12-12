@@ -1,0 +1,46 @@
+{% extends 'admin/index.html' %}
+{% block body %}
+
+    <h2 class="heading-bar p-2 text-center">Complaints</h2>
+    <form action="" method="get">
+        <div class="container mt-5">
+            <div class="tm-product-table-container">
+                <table id="table" class="table table-striped tm-table-small tm-product-table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Complaint</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Status/Reply</th>
+                        <th scope="col">&nbsp;</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for i in data %}
+                        <tr>
+                            <th scope="col">{{ forloop.counter }}</th>
+                            <th scope="col">{{ i.cust_id.name }}</th>
+                            <th scope="col">{{ i.complaint }}</th>
+                            <th scope="col">{{ i.date }}</th>
+                            {% if i.reply == 'pending' %}
+                                <th>pending</th>
+                                <th>
+                                    <a id="button"
+                                       class="btn btn-primary rounded-3"
+                                       href="/sendrep/{{ i.id }}">reply</a>
+                                </th>
+                            {% else %}
+                                <th>{{ i.reply }}</th>
+                                <th scope="col"></th>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+
