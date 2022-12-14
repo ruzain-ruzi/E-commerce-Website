@@ -5,7 +5,7 @@
     <div class="mt-4 card-group container-fluid mx-0 justify-content-center" style="max-width: 100%">
         {% for i in data %}
             <div id="cards" class="p-0 m-3 shadow-lg card border-0">
-                <img src="{{ i.photo }}" width="250" height="180px"
+                <img src="{{ i.photo.url }}" width="250" height="180px"
                      class="card-img-top border-0 border-dark" style="max-height: 200px;border-radius: 10px 10px 0 0"
                      alt="Product-Image">
                 <form action="/products" method="post">

@@ -107,10 +107,6 @@ def reg(request):
         post = request.POST['post']
         pin = request.POST['pin']
         pict = request.FILES['fileField']
-        date = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
-        fs = FileSystemStorage()
-        fs.save(r"C:\Users\ruzai\PycharmProjects\E-commerce_Website\shop\static\pic\\" + date + '.jpg', pict)
-        path = "/static/pic/" + date + '.jpg'
         number = request.POST['number']
         email = request.POST['email']
         pas = request.POST['passwd']
@@ -132,7 +128,7 @@ def reg(request):
             sho.place = place
             sho.post = post
             sho.pin = pin
-            sho.photo = str(path)
+            sho.photo = pict
             sho.email = email
             sho.phone_number = number
             sho.password = pas
@@ -156,17 +152,13 @@ def add_prod(request):
     if request.method == 'POST':
         name = request.POST['name']
         pict = request.FILES['file']
-        date = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
-        fs = FileSystemStorage()
-        fs.save(r"C:\Users\ruzai\PycharmProjects\E-commerce_Website\shop\static\pic\products\\" + date + '.jpg', pict)
-        path = "/static/pic/products/" + date + '.jpg'
         price = request.POST['price']
         st = request.POST['stk']
 
         sid = request.session['lid']
         obj = products()
         obj.name = name
-        obj.photo = path
+        obj.photo = pict
         obj.price = price
         obj.stock = st
         obj.shop_id_id = sid
@@ -188,17 +180,13 @@ def update_prod(request, id):
     if request.method == 'POST':
         name = request.POST['name']
         pict = request.FILES['fileInput']
-        date = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
-        fs = FileSystemStorage()
-        fs.save(r"C:\Users\ruzai\PycharmProjects\E-commerce_Website\shop\static\pic\products\\" + date + '.jpg', pict)
-        path = "/static/pic/products/" + date + '.jpg'
         price = request.POST['price']
         st = request.POST['stk']
 
         sid = request.session['lid']
         obj = products.objects.filter(id=id)
         obj.update(name=name)
-        obj.update(photo=path)
+        obj.update(photo=pict)
         obj.update(price=price)
         obj.update(stock=st)
         obj.update(shop_id_id=sid)
@@ -240,10 +228,6 @@ def shop_update_profile(request):
         post = request.POST['post']
         pin = request.POST['pin']
         pict = request.FILES['avatar']
-        date = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
-        fs = FileSystemStorage()
-        fs.save(r"C:\Users\ruzai\PycharmProjects\E-commerce_Website\shop\static\pic\products\\" + date + '.jpg', pict)
-        path = "/static/pic/products/" + date + '.jpg'
         email = request.POST['email']
         number = request.POST['phone']
 
@@ -253,7 +237,7 @@ def shop_update_profile(request):
         obj.update(place=place)
         obj.update(post=post)
         obj.update(pin=pin)
-        obj.update(photo=path)
+        obj.update(photo=pict)
         obj.update(email=email)
         obj.update(phone_number=number)
         obj.update(shop_id_id=sid)
@@ -305,10 +289,6 @@ def user_reg(request):
         post = request.POST['post']
         pin = request.POST['pin']
         pict = request.FILES['fileField']
-        date = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
-        fs = FileSystemStorage()
-        fs.save(r"C:\Users\ruzai\PycharmProjects\E-commerce_Website\shop\static\customer\img\\" + date + '.jpg', pict)
-        path = "/static/customer/img/" + date + '.jpg'
         dob = request.POST['dob']
         gend = request.POST['gender']
         number = request.POST['number']
@@ -332,7 +312,7 @@ def user_reg(request):
             cus.place = place
             cus.post = post
             cus.pin = pin
-            cus.photo = str(path)
+            cus.photo = pict
             cus.dob = dob
             cus.gender = gend
             cus.email = email
@@ -621,10 +601,6 @@ def cust_update_profile(request):
         post = request.POST['post']
         pin = request.POST['pin']
         pict = request.FILES['avatar']
-        date = datetime.datetime.now().strftime('%y%m%d-%H%M%S')
-        fs = FileSystemStorage()
-        fs.save(r"C:\Users\ruzai\PycharmProjects\E-commerce_Website\shop\static\pic\customer\\" + date + '.jpg', pict)
-        path = "/static/pic/customer/" + date + '.jpg'
         email = request.POST['email']
         number = request.POST['phone']
         dob = request.POST['dob']
@@ -636,7 +612,7 @@ def cust_update_profile(request):
         obj.update(place=place)
         obj.update(post=post)
         obj.update(pin=pin)
-        obj.update(photo=path)
+        obj.update(photo=pict)
         obj.update(email=email)
         obj.update(phone_number=number)
         obj.update(dob=dob)

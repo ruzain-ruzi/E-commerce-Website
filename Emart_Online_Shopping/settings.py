@@ -34,7 +34,7 @@ SECRET_KEY = 'django-insecure-+*)cff3)0nwp7*o-s6(w1nbyt4--r0o0s05-f+n9i)4g=%s8bc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app', '.now.sh']
+ALLOWED_HOSTS = ['.vercel.app', '.now.sh', '127.0.0.1']
 
 # Application definition
 
@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     # 'livereload',
     'django.contrib.staticfiles',
     'shop.apps.ShopConfig',
+    'cloudinary',
+    'cloudinary_storage'
 ]
 
 MIDDLEWARE = [
@@ -86,12 +88,12 @@ WSGI_APPLICATION = 'Emart_Online_Shopping.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': "django.db.backends.postgresql_psycopg2",
         'HOST': "db.htctvkziatwakbkjegwp.supabase.co",
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'DQouuBOQMPENsdeg',
-        'PORT': '5432'
+        'NAME': "postgres",
+        'USER': "postgres",
+        'PASSWORD': "DQouuBOQMPENsdeg",
+        'PORT': "5432"
     }
 }
 
@@ -135,9 +137,27 @@ STATIC_URL = '/static/'
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'shop/static'),
 # ]
-STATICFILES_DIRS = os.path.join(BASE_DIR, 'shop/static'),
+STATICFILES_DIRS = os.path.join(BASE_DIR, 'static'),
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build', 'static')
 
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+cloudinary.config( 
+  cloud_name = "dni2bwk9n", 
+  api_key = "947535293251513", 
+  api_secret = "7VE4WU1pfgLPxMNhBuYBSc68KQ8" 
+)
+
+CLOUDINARY_STORAGE = {
+  'CLOUD_NAME': "dni2bwk9n", 
+  'API_KEY': "947535293251513", 
+  'API_SECRET': "7VE4WU1pfgLPxMNhBuYBSc68KQ8" 
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 

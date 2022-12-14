@@ -4,10 +4,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'shop/lib/owlcarousel/assets/owl.carousel.min.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'admin_h/css/bootstrap.min.css' %}"/>
 <link rel="stylesheet" type="text/css" href="{% static 'shop/css/templatemo-style.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'home/fontawesome/css/fontawesome.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'home/fontawesome/css/brands.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static 'home/fontawesome/css/solid.css' %}"/>
-<link rel="stylesheet" type="text/css" href="{% static '/home/fontawesome/css/v5-font-face.css' %}"/>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,6 +24,8 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <link href="{% static 'favicon/favicon.ico' %}" rel="icon">
+
+    <script src="https://kit.fontawesome.com/b16517885d.js" crossorigin="anonymous"></script>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -80,18 +78,18 @@
             <a href="/customer" class="nav-item nav-link">Home</a>
             <a href="/shops" class="nav-item nav-link">Shops</a>
             <a href="/products" class="nav-item nav-link">Products</a>
-            <a href="/cart" class="mt-1 nav-item nav-link fa-solid fa-shopping-cart" title="My Cart"></a>
+            <a href="/cart" class="mt-1 nav-item nav-link" title="My Cart"><i class="fa-solid fa-cart-shopping"></i></a>
             <div class="nav-item dropdown">
-                <a href="#" class="mt-1 nav-link fa-solid fa-user" data-bs-toggle="dropdown"
-                   title="Profile"></a>
+                <a href="#" class="mt-1 nav-link" data-bs-toggle="dropdown"
+                   title="Profile"><i class="fa-solid fa-user"></i></a>
                 <div class="dropdown-menu fade-down m-0">
                     <a href="/cust_profile" class="dropdown-item">My Profile</a>
                     <a href="/cust_orders" class="dropdown-item">My Orders</a>
                 </div>
             </div>
             <div class="nav-item dropdown">
-                <a href="#" class="mt-1 nav-link fa-solid fa-question" data-bs-toggle="dropdown"
-                   title="Help"></a>
+                <a href="#" class="mt-1 nav-link" data-bs-toggle="dropdown"
+                   title="Help"><i class="fa-solid fa-question"></i></a>
                 <div class="dropdown-menu fade-down m-0">
                     <a href="/send_complaint" class="dropdown-item">Send Complaint</a>
                     <a href="/send_feedback" class="dropdown-item">Send Feedback</a>

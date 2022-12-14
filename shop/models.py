@@ -14,7 +14,7 @@ class shop(models.Model):
     place = models.CharField(max_length=200)
     post = models.CharField(max_length=200)
     pin = models.BigIntegerField()
-    photo = models.CharField(max_length=200)
+    photo = models.FileField(upload_to='shop-images')
     email = models.CharField(max_length=200)
     phone_number = models.BigIntegerField()
     password = models.CharField(max_length=200)
@@ -26,7 +26,7 @@ class customer(models.Model):
     place = models.CharField(max_length=200)
     post = models.CharField(max_length=200)
     pin = models.BigIntegerField()
-    photo = models.CharField(max_length=200)
+    photo = models.FileField(upload_to='customer-images')
     email = models.CharField(max_length=200)
     phone_number = models.BigIntegerField()
     dob = models.DateField()
@@ -51,7 +51,7 @@ class feedback(models.Model):
 class products(models.Model):
     shop_id = models.ForeignKey(shop, default=1, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
-    photo = models.CharField(max_length=200)
+    photo = models.FileField(upload_to='product-images')
     price = models.CharField(max_length=200)
     stock = models.BigIntegerField()
 

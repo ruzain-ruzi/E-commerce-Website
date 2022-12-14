@@ -25,7 +25,7 @@
                             <tr>
                                 <th scope="col">{{ forloop.counter }}</th>
                                 <th scope="col">{{ x.product_id.name }}</th>
-                                <th scope="col"><img src="{{ x.product_id.photo }}" width="60px"
+                                <th scope="col"><img src="{{ x.product_id.photo.url }}" width="60px"
                                                      height="50px"
                                                      alt="product-image"></th>
                                 <th scope="col">{{ x.quantity }}</th>
