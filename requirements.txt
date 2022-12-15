@@ -1,8 +1,8 @@
+Django==3.2.16
 asgiref==3.5.2
 certifi==2022.12.7
 charset-normalizer==2.1.1
 cloudinary==1.30.0
-Django==3.2.16
 django-cloudinary-storage==0.3.0
 idna==3.4
 psycopg2==2.9.5
