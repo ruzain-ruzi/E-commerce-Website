@@ -49,7 +49,7 @@ class feedback(models.Model):
 
 
 class products(models.Model):
-    shop_id = models.ForeignKey(shop, default=1, on_delete=models.CASCADE)
+    shop_id = models.ForeignKey(shop, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     photo = models.FileField(upload_to='product-images')
     price = models.CharField(max_length=200)
